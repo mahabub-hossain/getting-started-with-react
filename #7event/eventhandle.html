@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+    class Counter extends React.Component{
+        constructor(){
+            //super for constructon
+            super()
+            //state to initialize
+            this.state={
+                count : 0
+            }
+            this.handleAddition = this.handleAddition.bind(this)
+            this.handleSubtraction = this.handleSubtraction.bind(this)
+
+        }
+        
+        handleSubtraction(){
+            this.setState({
+                count: this.state.count -1
+            })
+            //console.log('subtraction');
+        }
+        handleAddition(){
+            this.setState({
+                count: this.state.count + 1
+            })
+            //console.log('addition');
+        }
+        render(){
+            let type = '';
+            if(this.state.count % 2 === 0) {
+            type = 'even';
+            } else {
+            type = 'odd';
+            }
+            return (
+                <div>
+                    <h2>{this.state.count % 2 === 0 ? 'even' : 'odd'}</h2>
+                    <h2>{type}</h2>
+                    <button onClick={this.handleSubtraction}>-</button>
+                    <span style={{padding:'30px'}}>{this.state.count}</span>
+                    <button onClick={this.handleAddition}>+</button>
+                </div>
+            )
+        }
+    }
+    const App = function(){
+            return (
+                <div>
+                    <Counter/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App/>,document.getElementById('app'));
+
+    </script>
+</body>
+
+</html>

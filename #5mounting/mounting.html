@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+        const Year = function(props){
+            console.log(props)
+            const date = new Date();
+            const thisYear = date.getFullYear();
+            return (<h3  style={{color: props.color,fontSize: props.fontsize}}>current year is : {thisYear}</h3>)
+        } 
+        const Header = function(){
+            return(
+                <h1> This is Header</h1>
+            )
+        }
+
+        const App = function(){
+            return (
+                <div>
+                    <Header/>
+                    <Year color="#00ff11" fontsize="50px"/>
+                    <Year color="#00gg22" fontsize="50px"/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App/>,document.getElementById('app'));
+
+    </script>
+</body>
+
+</html>
